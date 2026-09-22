@@ -29,7 +29,8 @@ classifiers = [
 ]
 dependencies = [
     "pandas",
-	"typer",
+    "pdfplumber>=0.11.10",
+    "typer",
 ]
 
 [project.urls]
