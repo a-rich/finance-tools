@@ -1,0 +1,112 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "financetools"
+version = "0.1.0"
+authors = [
+    {name = "Alex Richards", email = "alex.richards006@gmail.com"},
+]
+description = "Finance tools."
+readme = {file = "README.md", content-type = "text/markdown"}
+keywords = []
+requires-python=">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Other Audience",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Other/Nonlisted Topic"
+]
+dependencies = [
+    "pandas",
+	"typer",
+]
+
+[project.urls]
+"Repository" = "https://github.com/a-rich/finance-tools"
+"Documentation" = ""
+
+[dependency-groups]
+dev = [
+    "build",
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings-python",
+    "pre-commit",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "ruff",
+    "semver",
+    "tomli; python_version < '3.11'",
+    "twine",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/financetools"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover"
+]
+
+[tool.ruff]
+line-length = 79
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+#    "E",      # pycodestyle errors
+#    "W",      # pycodestyle warnings
+#    "F",      # Pyflakes
+#    "I",      # isort
+#    "N",      # pep8-naming
+#    "B",      # flake8-bugbear
+#    "C4",     # flake8-comprehensions
+#    "G",      # flake8-logging-format
+#    "PL",     # Pylint
+#    "RUF",    # Ruff-specific rules
+]
+ignore = [
+#    "E402",     # module-import-not-at-top-of-file (intentional)
+#    "E501",     # line-too-long (formatter handles this)
+#    "G004",     # logging-fstring-interpolation (style choice)
+#    "PLC0415",  # import-outside-top-level (intentional lazy imports)
+]
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-branches = 25
+max-returns = 8
+max-statements = 100
+max-public-methods = 100
+
+[tool.ruff.lint.per-file-ignores]
+# "scripts/collection/get_hot_cue_timings.py" = [
+#     "B018",     # useless-expression (intentional property access for side effects)
+#     "B020",     # loop-variable-overrides-iterator (intentional groupby pattern)
+#     "G002",     # logging-percent-format (legacy script)
+#     "G003",     # logging-string-concat (complex string building)
+#     "PLW2901",  # redefined-loop-name (intentional groupby pattern)
+#     "PLR0913",  # too-many-arguments (would require refactor)
+#     "PLR2004",  # magic-value-comparison (sample rate constant)
+# ]
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
