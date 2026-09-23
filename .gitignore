@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+/EePayrollPayCheckDetail.pdf
+/pay_summary*.pdf
+/EquityAwardsCenter_Transactions_*.csv
